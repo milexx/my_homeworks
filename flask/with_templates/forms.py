@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from wtforms import Form
+from flask.ext.wtf import Form
 from wtforms import StringField, validators, ValidationError
 
 __author__ = 'milex'
@@ -13,9 +13,9 @@ def full_name_validator(form, field):
 
 
 class ContactForm(Form):
-    name = StringField(label='Name', validators=[
-        validators.Length(min=4, max=100), full_name_validator,
+    title = StringField(label='Title', validators=[
+        validators.Length(min=4, max=100),
     ])
-    email = StringField(label='E-mail', validators=[
-        validators.Length(min=6, max=35), validators.Email(),
+    text = StringField(label="Text", validators=[
+        validators.Length(min=1, max=170),
     ])

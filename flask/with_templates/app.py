@@ -27,8 +27,9 @@ class Storage(object):
             cls.items = []
         return cls.obj
 
-app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def home():
+
     validation_result = None
     current_date = datetime.datetime.now()
     storage = Storage()
@@ -41,7 +42,7 @@ def home():
             all_items.append(model)
     else:
         form = ContactForm()
-    return render_template('home.html', form=form, items=all_items)
+    return render_template('home.html', form=form, items=all_items, )
 
 if __name__ == '__main__':
     app.run(debug=True)
